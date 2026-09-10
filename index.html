@@ -29,19 +29,36 @@
     :root {
 
       --color-bg: #fbfbfb;
-      --color-bg-light: #f1f1f1;
 
-      --color-primary: #019b98;
-      --color-primary-light: #c1ffff;
-      --color-primary-mid: #55ccc9;
+      --color-bg-light:
+        #f1f1f1;
 
-      --color-text: #014e60;
-      --color-text-sub: #3f7a8d;
+      --color-border:
+        #e4e8e9;
 
-      --color-accent: #dd0025;
-      --color-accent-light: #ffbfab;
+      --color-primary:
+        #019b98;
 
-      --color-white: #ffffff;
+      --color-primary-light:
+        #c1ffff;
+
+      --color-primary-mid:
+        #55ccc9;
+
+      --color-text:
+        #014e60;
+
+      --color-text-sub:
+        #3f7a8d;
+
+      --color-accent:
+        #dd0025;
+
+      --color-accent-light:
+        #ffbfab;
+
+      --color-white:
+        #ffffff;
 
     }
 
@@ -93,6 +110,18 @@
     }
 
 
+    img {
+
+      display:
+        block;
+
+      max-width:
+        100%;
+
+    }
+
+
+
     /* =====================================================
        HERO
        ===================================================== */
@@ -114,7 +143,8 @@
         );
 
       border-bottom:
-        1px solid var(--color-bg-light);
+        1px solid
+        var(--color-bg-light);
 
     }
 
@@ -169,7 +199,8 @@
         220px;
 
       border:
-        2px dashed var(--color-primary-mid);
+        2px dashed
+        var(--color-primary-mid);
 
       border-radius:
         50%;
@@ -218,6 +249,11 @@
     }
 
 
+
+    /* =====================================================
+       HERO BADGE
+       ===================================================== */
+
     .hero-eyebrow {
 
       display:
@@ -226,14 +262,20 @@
       align-items:
         center;
 
-      height:
-        36px;
+      gap:
+        7px;
+
+      min-height:
+        40px;
 
       padding:
-        0 16px;
+        8px 16px;
 
       margin-bottom:
         24px;
+
+      border:
+        0;
 
       border-radius:
         999px;
@@ -241,20 +283,50 @@
       background:
         var(--color-primary-light);
 
+    }
+
+
+    .hero-logo {
+
+      display:
+        block;
+
+      width:
+        auto;
+
+      height:
+        22px;
+
+      object-fit:
+        contain;
+
+    }
+
+
+    .hero-eyebrow-text {
+
       color:
         var(--color-text);
 
       font-size:
         14px;
 
+      line-height:
+        20px;
+
       font-weight:
         700;
 
-      letter-spacing:
-        0.02em;
+      white-space:
+        nowrap;
 
     }
 
+
+
+    /* =====================================================
+       HERO COPY
+       ===================================================== */
 
     .hero-title {
 
@@ -290,7 +362,7 @@
     .hero-description {
 
       margin:
-        0 0 20px;
+        0 0 22px;
 
       color:
         var(--color-text-sub);
@@ -304,12 +376,12 @@
       font-weight:
         400;
 
+      word-break:
+        keep-all;
+
     }
 
 
-    /*
-     * 감사 선물 안내
-     */
     .hero-gift {
 
       margin:
@@ -327,7 +399,11 @@
       font-weight:
         600;
 
+      word-break:
+        keep-all;
+
     }
+
 
 
     /* =====================================================
@@ -360,7 +436,11 @@
         transparent;
 
       font-size:
-        clamp(84px, 13vw, 150px);
+        clamp(
+          84px,
+          13vw,
+          150px
+        );
 
       line-height:
         1;
@@ -372,10 +452,11 @@
         -0.03em;
 
       -webkit-text-stroke:
-        2px var(--color-primary-mid);
+        2px
+        var(--color-primary-mid);
 
       opacity:
-        0.5;
+        0.45;
 
       user-select:
         none;
@@ -433,7 +514,8 @@
         24px;
 
       box-shadow:
-        0 12px 28px rgba(1, 78, 96, 0.07);
+        0 12px 28px
+        rgba(1, 78, 96, 0.07);
 
     }
 
@@ -450,7 +532,8 @@
         var(--color-white);
 
       border:
-        1px solid var(--color-bg-light);
+        1px solid
+        var(--color-bg-light);
 
       border-radius:
         22px 22px 22px 6px;
@@ -465,7 +548,10 @@
         700;
 
       animation:
-        floatA 6s ease-in-out infinite;
+        floatA
+        6s
+        ease-in-out
+        infinite;
 
     }
 
@@ -494,10 +580,14 @@
         700;
 
       box-shadow:
-        0 14px 30px rgba(1, 155, 152, 0.24);
+        0 14px 30px
+        rgba(1, 155, 152, 0.24);
 
       animation:
-        floatB 5.4s ease-in-out infinite;
+        floatB
+        5.4s
+        ease-in-out
+        infinite;
 
     }
 
@@ -523,7 +613,10 @@
         500;
 
       animation:
-        floatA 6.6s ease-in-out infinite;
+        floatA
+        6.6s
+        ease-in-out
+        infinite;
 
     }
 
@@ -552,7 +645,8 @@
         var(--color-white);
 
       border:
-        1px solid var(--color-bg-light);
+        1px solid
+        var(--color-bg-light);
 
       border-radius:
         999px;
@@ -632,6 +726,7 @@
     }
 
 
+
     /* =====================================================
        FORM SECTION
        ===================================================== */
@@ -695,6 +790,17 @@
       letter-spacing:
         -0.01em;
 
+      text-align:
+        center;
+
+    }
+
+
+    .section-title-line {
+
+      display:
+        inline-block;
+
     }
 
 
@@ -715,8 +821,16 @@
       font-weight:
         400;
 
+      word-break:
+        keep-all;
+
     }
 
+
+
+    /* =====================================================
+       GOOGLE APPS SCRIPT FRAME
+       ===================================================== */
 
     .form-frame {
 
@@ -730,13 +844,15 @@
         var(--color-white);
 
       border:
-        1px solid var(--color-bg-light);
+        1px solid
+        var(--color-border);
 
       border-radius:
         24px;
 
       box-shadow:
-        0 12px 36px rgba(1, 78, 96, 0.05);
+        0 12px 36px
+        rgba(1, 78, 96, 0.05);
 
     }
 
@@ -765,6 +881,7 @@
         hidden;
 
     }
+
 
 
     /* =====================================================
@@ -889,7 +1006,8 @@
         0;
 
       border-top:
-        1px solid #c8c8c8;
+        1px solid
+        #c8c8c8;
 
     }
 
@@ -909,7 +1027,8 @@
         20px 4px;
 
       border-bottom:
-        1px solid #c8c8c8;
+        1px solid
+        #c8c8c8;
 
       color:
         var(--color-text-sub);
@@ -922,6 +1041,9 @@
 
       font-weight:
         400;
+
+      word-break:
+        keep-all;
 
     }
 
@@ -949,11 +1071,15 @@
     }
 
 
+
     /* =====================================================
        FOOTER
        ===================================================== */
 
     footer {
+
+      width:
+        100%;
 
       background:
         var(--color-text);
@@ -993,6 +1119,12 @@
     }
 
 
+
+    /*
+     * 실제 회사 로고
+     *
+     * 별도의 흰색 배경 / 테두리 / 박스 없음
+     */
     .footer-logo {
 
       display:
@@ -1001,32 +1133,37 @@
       align-items:
         center;
 
-      justify-content:
-        center;
-
-      min-height:
-        48px;
-
-      padding:
-        0 18px;
-
       margin-bottom:
         20px;
 
+      padding:
+        0;
+
+      border:
+        0;
+
       border-radius:
-        14px;
+        0;
 
       background:
-        var(--color-white);
+        transparent;
 
-      color:
-        var(--color-primary);
+    }
 
-      font-size:
-        22px;
 
-      font-weight:
-        800;
+    .footer-logo img {
+
+      display:
+        block;
+
+      width:
+        auto;
+
+      height:
+        34px;
+
+      object-fit:
+        contain;
 
     }
 
@@ -1048,6 +1185,9 @@
       font-weight:
         400;
 
+      word-break:
+        keep-all;
+
     }
 
 
@@ -1059,14 +1199,21 @@
       font-size:
         14px;
 
+      line-height:
+        22px;
+
       font-weight:
         400;
+
+      white-space:
+        nowrap;
 
     }
 
 
+
     /* =====================================================
-       TABLET / MOBILE
+       TABLET
        ===================================================== */
 
     @media (
@@ -1090,7 +1237,7 @@
       .hero-title {
 
         font-size:
-          34px;
+          40px;
 
         line-height:
           1.28;
@@ -1102,7 +1249,7 @@
       .hero-gift {
 
         font-size:
-          16px;
+          17px;
 
       }
 
@@ -1116,7 +1263,10 @@
           0;
 
         font-size:
-          min(88px, 15vw);
+          min(
+            88px,
+            15vw
+          );
 
       }
 
@@ -1207,14 +1357,69 @@
     }
 
 
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
     @media (
       max-width: 560px
     ) {
 
-      .hero-title {
+      .hero-inner {
+
+        padding:
+          44px 20px 52px;
+
+      }
+
+
+      .hero-eyebrow {
+
+        min-height:
+          38px;
+
+        padding:
+          7px 13px;
+
+      }
+
+
+      .hero-logo {
+
+        height:
+          19px;
+
+      }
+
+
+      .hero-eyebrow-text {
 
         font-size:
-          29px;
+          13px;
+
+      }
+
+
+      .hero-title {
+
+        margin-bottom:
+          22px;
+
+        font-size:
+          32px;
+
+      }
+
+
+      .hero-description,
+      .hero-gift {
+
+        font-size:
+          16px;
+
+        line-height:
+          1.7;
 
       }
 
@@ -1254,11 +1459,32 @@
 
       .form-section-inner {
 
-        padding-left:
-          16px;
+        padding:
+          48px 16px 56px;
 
-        padding-right:
-          16px;
+      }
+
+
+      .section-heading {
+
+        margin-bottom:
+          28px;
+
+      }
+
+
+      .section-title {
+
+        font-size:
+          24px;
+
+      }
+
+
+      .section-description {
+
+        font-size:
+          15px;
 
       }
 
@@ -1287,11 +1513,62 @@
 
       .notice-inner {
 
-        padding-left:
-          20px;
+        padding:
+          52px 20px;
 
-        padding-right:
-          20px;
+      }
+
+
+      .notice-title {
+
+        font-size:
+          24px;
+
+      }
+
+
+      .notice-item {
+
+        gap:
+          12px;
+
+        padding:
+          18px 2px;
+
+        font-size:
+          15px;
+
+      }
+
+
+      .footer-inner {
+
+        padding:
+          44px 20px;
+
+      }
+
+
+      .footer-logo img {
+
+        height:
+          30px;
+
+      }
+
+
+      .footer-text {
+
+        font-size:
+          15px;
+
+      }
+
+
+      .copyright {
+
+        font-size:
+          13px;
 
       }
 
@@ -1320,16 +1597,34 @@
     <div class="hero-inner">
 
 
-      <!-- 텍스트 -->
+      <!-- =================================================
+           HERO TEXT
+           ================================================= -->
 
       <div class="hero-copy">
 
 
+        <!-- 회사 로고 + 고객 의견 수집 -->
+
         <div class="hero-eyebrow">
 
-          단꿈e · 고객 의견 수집
+
+          <img
+            src="./dankkume-logo.png"
+            alt="단꿈e"
+            class="hero-logo"
+          >
+
+
+          <span class="hero-eyebrow-text">
+
+            · 고객 의견 수집
+
+          </span>
+
 
         </div>
+
 
 
         <h1 class="hero-title">
@@ -1337,10 +1632,13 @@
           단꿈에게<br>
 
           <span class="hero-title-point">
+
             말해주세요.
+
           </span>
 
         </h1>
+
 
 
         <p class="hero-description">
@@ -1352,6 +1650,7 @@
           더 나은 단꿈으로 만들어가겠습니다.
 
         </p>
+
 
 
         <p class="hero-gift">
@@ -1366,7 +1665,10 @@
       </div>
 
 
-      <!-- 그래픽 -->
+
+      <!-- =================================================
+           HERO GRAPHIC
+           ================================================= -->
 
       <div class="hero-graphic">
 
@@ -1384,9 +1686,13 @@
         <div class="bubble-wrap">
 
 
+          <!-- 첫 번째 말풍선 -->
+
           <div class="bubble bubble-1">
 
+
             <span class="bubble-icon">
+
 
               <svg
                 width="24"
@@ -1397,22 +1703,33 @@
                 stroke-width="1.7"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
               >
 
-                <path d="M4 5h16v11H9l-5 4V5Z"></path>
+                <path
+                  d="M4 5h16v11H9l-5 4V5Z"
+                ></path>
 
               </svg>
 
+
             </span>
 
+
             이런 점이 불편했어요
+
 
           </div>
 
 
+
+          <!-- 두 번째 말풍선 -->
+
           <div class="bubble bubble-2">
 
+
             <span class="bubble-icon">
+
 
               <svg
                 width="24"
@@ -1423,22 +1740,33 @@
                 stroke-width="1.7"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
               >
 
-                <path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"></path>
+                <path
+                  d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"
+                ></path>
 
               </svg>
 
+
             </span>
 
+
             이런 게 있으면 좋겠어요
+
 
           </div>
 
 
+
+          <!-- 세 번째 말풍선 -->
+
           <div class="bubble bubble-3">
 
+
             <span class="bubble-icon">
+
 
               <svg
                 width="22"
@@ -1449,20 +1777,30 @@
                 stroke-width="1.7"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
               >
 
-                <path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path>
+                <path
+                  d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"
+                ></path>
 
               </svg>
 
+
             </span>
 
+
             응원의 이야기도 좋아요
+
 
           </div>
 
 
+
+          <!-- 전달 안내 -->
+
           <div class="bubble-label">
+
 
             <svg
               width="18"
@@ -1473,13 +1811,18 @@
               stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
+              aria-hidden="true"
             >
 
-              <path d="M4 4l16 8-16 8 3-8-3-8Z"></path>
+              <path
+                d="M4 4l16 8-16 8 3-8-3-8Z"
+              ></path>
 
             </svg>
 
+
             단꿈에 전달됩니다
+
 
           </div>
 
@@ -1498,11 +1841,16 @@
 
 
   <!-- =====================================================
-       의견 작성
+       MAIN
        ===================================================== -->
 
   <main>
 
+
+
+    <!-- ===================================================
+         의견 작성
+         =================================================== -->
 
     <section class="form-section">
 
@@ -1515,7 +1863,13 @@
 
           <h2 class="section-title">
 
-            의견을 들려주세요
+
+            <span class="section-title-line">
+
+              — 의견을 들려주세요 —
+
+            </span>
+
 
           </h2>
 
@@ -1529,6 +1883,9 @@
 
         </div>
 
+
+
+        <!-- Google Apps Script -->
 
         <div class="form-frame">
 
@@ -1565,7 +1922,10 @@
         <div class="notice-heading">
 
 
-          <span class="notice-icon">
+          <span
+            class="notice-icon"
+            aria-hidden="true"
+          >
 
             !
 
@@ -1582,12 +1942,16 @@
         </div>
 
 
+
         <ul class="notice-list">
+
 
 
           <li class="notice-item">
 
+
             <span class="notice-dot"></span>
+
 
             <span>
 
@@ -1595,12 +1959,16 @@
 
             </span>
 
+
           </li>
+
 
 
           <li class="notice-item">
 
+
             <span class="notice-dot"></span>
+
 
             <span>
 
@@ -1608,12 +1976,16 @@
 
             </span>
 
+
           </li>
+
 
 
           <li class="notice-item">
 
+
             <span class="notice-dot"></span>
+
 
             <span>
 
@@ -1622,12 +1994,16 @@
 
             </span>
 
+
           </li>
+
 
 
           <li class="notice-item">
 
+
             <span class="notice-dot"></span>
+
 
             <span>
 
@@ -1636,18 +2012,23 @@
 
             </span>
 
+
           </li>
+
 
 
           <li class="notice-item">
 
+
             <span class="notice-dot"></span>
+
 
             <span>
 
               욕설, 비방, 개인정보가 포함된 내용은 작성하지 말아 주세요.
 
             </span>
+
 
           </li>
 
@@ -1678,11 +2059,26 @@
       <div>
 
 
+        <!--
+          실제 회사 로고
+
+          GitHub 구조
+          main
+          ├─ dankkume-logo.png
+          └─ index.html
+        -->
+
         <div class="footer-logo">
 
-          단꿈e
+
+          <img
+            src="./dankkume-logo.png"
+            alt="단꿈e"
+          >
+
 
         </div>
+
 
 
         <p class="footer-text">
@@ -1695,6 +2091,7 @@
 
 
       </div>
+
 
 
       <div class="copyright">
@@ -1712,11 +2109,12 @@
 
 
   <!-- =====================================================
+       GOOGLE APPS SCRIPT
        IFRAME AUTO HEIGHT
-       Google Apps Script에서 전달하는 높이에 맞게 자동 조절
        ===================================================== -->
 
   <script>
+
 
     const opinionFrame =
       document.getElementById(
@@ -1743,14 +2141,14 @@
 
 
         /*
-         * Apps Script에서 아래 두 형태 모두 지원
+         * Apps Script에서 다음 형태 지원
          *
-         * 1.
          * {
          *   dankkumeHeight: 1200
          * }
          *
-         * 2.
+         * 또는
+         *
          * {
          *   type: 'dankkume:height',
          *   height: 1200
@@ -1775,6 +2173,7 @@
           ) > 200
         ) {
 
+
           opinionFrame.style.height =
             Math.ceil(
               Number(
@@ -1786,10 +2185,13 @@
             +
             'px';
 
+
         }
+
 
       }
     );
+
 
   </script>
 
