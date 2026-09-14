@@ -609,6 +609,8 @@
        ========================================================= */
 
     .form-frame {
+      position: relative;
+
       width: 100%;
 
       margin: 0;
@@ -625,6 +627,146 @@
       box-shadow: none;
 
       overflow: hidden;
+    }
+
+
+    /* ---------------------------------------------------------
+       LOADING
+       --------------------------------------------------------- */
+
+    .form-loader {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      z-index: 10;
+
+      width: 100%;
+      height: 100%;
+
+      min-height: 420px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-start;
+
+      padding:
+        120px 24px 40px;
+
+      background:
+        linear-gradient(
+          160deg,
+          #f1ffff 0%,
+          #ffffff 58%,
+          #fbfbfb 100%
+        );
+
+      opacity: 1;
+      visibility: visible;
+
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+    }
+
+    .form-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+
+      pointer-events: none;
+    }
+
+    .loader-title {
+      margin-bottom: 24px;
+
+      color: var(--color-text);
+
+      font-size: 18px;
+      line-height: 26px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+    }
+
+    .loader-bar {
+      position: relative;
+
+      width:
+        min(
+          380px,
+          72%
+        );
+
+      height: 18px;
+
+      padding: 3px;
+
+      overflow: hidden;
+
+      border:
+        2px solid
+        var(--color-primary);
+
+      border-radius: 999px;
+
+      background:
+        var(--color-white);
+    }
+
+    .loader-bar-progress {
+      display: block;
+
+      width: 42%;
+      height: 100%;
+
+      border-radius: 999px;
+
+      background:
+        var(--color-primary);
+
+      animation:
+        loadingProgress
+        1.5s
+        ease-in-out
+        infinite;
+    }
+
+    .loader-description {
+      margin:
+        20px 0 0;
+
+      color:
+        var(--color-text-sub);
+
+      font-size: 15px;
+      line-height: 24px;
+
+      font-weight: 500;
+
+      text-align: center;
+    }
+
+    @keyframes loadingProgress {
+      0% {
+        transform:
+          translateX(-125%);
+      }
+
+      50% {
+        transform:
+          translateX(75%);
+      }
+
+      100% {
+        transform:
+          translateX(245%);
+      }
     }
 
     #opinionFrame {
@@ -1341,14 +1483,54 @@
              GOOGLE APPS SCRIPT
              =================================================== -->
 
-        <div class="form-frame">
+        <div
+          id="formFrame"
+          class="form-frame"
+        >
+
+          <!-- ===============================================
+               LOADING
+               =============================================== -->
+
+          <div
+            id="formLoader"
+            class="form-loader"
+            role="status"
+            aria-live="polite"
+          >
+
+            <div class="loader-title">
+              NOW LOADING ...
+            </div>
+
+            <div
+              class="loader-bar"
+              aria-hidden="true"
+            >
+              <span class="loader-bar-progress"></span>
+            </div>
+
+            <p
+              id="loaderDescription"
+              class="loader-description"
+            >
+              의견 작성 화면을 불러오고 있어요.<br>
+              잠시만 기다려 주세요.
+            </p>
+
+          </div>
+
+
+          <!-- ===============================================
+               GOOGLE APPS SCRIPT
+               =============================================== -->
 
           <iframe
             id="opinionFrame"
             src="https://script.google.com/macros/s/AKfycbwqCxPeiZm1VOvKQiZkodnZASbECrCDUOFKI4zbO8IoB8z16KKOMn5Kqdh9BpOxy2-wyA/exec"
             title="단꿈에게 말해주세요 의견 작성"
             scrolling="no"
-            loading="lazy"
+            loading="eager"
           ></iframe>
 
         </div>
@@ -1500,16 +1682,121 @@
 
   <!-- =========================================================
        GOOGLE APPS SCRIPT
-       IFRAME AUTO HEIGHT
+       IFRAME LOADING + AUTO HEIGHT
        ========================================================= -->
 
   <script>
+
+    /* =========================================================
+       ELEMENTS
+       ========================================================= */
 
     const opinionFrame =
       document.getElementById(
         'opinionFrame'
       );
 
+    const formLoader =
+      document.getElementById(
+        'formLoader'
+      );
+
+    const loaderDescription =
+      document.getElementById(
+        'loaderDescription'
+      );
+
+    let loaderClosed =
+      false;
+
+
+    /* =========================================================
+       HIDE LOADER
+       ========================================================= */
+
+    function hideFormLoader() {
+
+      if (
+        loaderClosed ||
+        !formLoader
+      ) {
+        return;
+      }
+
+      loaderClosed =
+        true;
+
+      formLoader
+        .classList
+        .add(
+          'is-hidden'
+        );
+
+      setTimeout(
+        function () {
+
+          if (
+            formLoader &&
+            formLoader.parentNode
+          ) {
+            formLoader
+              .parentNode
+              .removeChild(
+                formLoader
+              );
+          }
+
+        },
+        450
+      );
+    }
+
+
+    /* =========================================================
+       IFRAME LOAD
+       ========================================================= */
+
+    opinionFrame.addEventListener(
+      'load',
+      function () {
+
+        setTimeout(
+          hideFormLoader,
+          300
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       LOADING DELAY MESSAGE
+       ========================================================= */
+
+    setTimeout(
+      function () {
+
+        if (
+          loaderClosed ||
+          !loaderDescription
+        ) {
+          return;
+        }
+
+        loaderDescription.innerHTML =
+          '의견 작성 화면을 준비하고 있어요.<br>'
+          +
+          '조금만 더 기다려 주세요.';
+
+      },
+      5000
+    );
+
+
+    /* =========================================================
+       GOOGLE APPS SCRIPT
+       IFRAME AUTO HEIGHT
+       ========================================================= */
 
     window.addEventListener(
       'message',
@@ -1518,38 +1805,19 @@
         const data =
           event.data;
 
-
         if (!data) {
           return;
         }
-
-
-        /*
-         * Google Apps Script에서
-         *
-         * {
-         *   dankkumeHeight: 1200
-         * }
-         *
-         * 또는
-         *
-         * {
-         *   type: 'dankkume:height',
-         *   height: 1200
-         * }
-         *
-         * 형태로 전달된 높이를 처리
-         */
 
         const height =
           data.dankkumeHeight
           ||
           (
-            data.type === 'dankkume:height'
+            data.type ===
+              'dankkume:height'
               ? data.height
               : null
           );
-
 
         if (
           height &&
@@ -1565,6 +1833,7 @@
             +
             'px';
 
+          hideFormLoader();
         }
 
       }
