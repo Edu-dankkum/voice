@@ -3,28 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>단꿈에게 말해주세요</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="./Favicon.png">
-
-  <!-- Paperlogy -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/whitedev7773/Paperlogy/paperlogy.css"
-  >
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/whitedev7773/Paperlogy/paperlogy.css">
 
   <style>
-    /* =========================================================
-       ROOT
-       ========================================================= */
-
+    /* ===== ROOT ===== */
     :root {
       --color-bg: #FFFFFF;
       --color-bg-light: #F1F1F1;
@@ -39,1254 +26,592 @@
       --color-accent: #dd0025;
       --color-accent-light: #ffbfab;
 
+      --color-naver: #00E278;
+
       --color-white: #ffffff;
       --color-border: #D9DFE1;
     }
 
+    /* ===== RESET ===== */
+    * { box-sizing: border-box; }
 
-    /* =========================================================
-       RESET
-       ========================================================= */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-
       width: 100%;
-
       background: var(--color-bg);
       color: var(--color-text);
-
-      font-family:
-        "Paperlogy",
-        "Pretendard",
-        "Noto Sans KR",
-        "Apple SD Gothic Neo",
-        sans-serif;
-
+      font-family: "Paperlogy", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    body {
-      overflow-x: hidden;
-    }
+    body { overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: var(--color-primary); text-decoration: none; }
+    a:hover { color: var(--color-text); }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       overflow: hidden;
-
-      background:
-        linear-gradient(
-          160deg,
-          rgba(193, 255, 255, 0.72) 0%,
-          rgba(255, 255, 255, 1) 56%,
-          rgba(251, 251, 251, 1) 100%
-        );
-
-      border-bottom:
-        1px solid var(--color-bg-light);
+      background: #FBFEFE;
+      border-bottom: 1px solid var(--color-bg-light);
     }
 
-
-    /* =========================================================
-       HERO DECORATION
-       ========================================================= */
+    /* 라인 그리드 배경 */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(1, 155, 152, 0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(1, 155, 152, 0.10) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
+      mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
+    }
 
     .hero-decoration-top {
       position: absolute;
-
       top: -140px;
       right: -120px;
-
       width: 420px;
       height: 420px;
-
       border-radius: 50%;
-
       background: var(--color-primary-light);
-
       opacity: 0.35;
-
       pointer-events: none;
     }
 
     .hero-decoration-bottom {
       position: absolute;
-
       bottom: -90px;
       left: -70px;
-
       width: 220px;
       height: 220px;
-
-      border:
-        2px dashed var(--color-primary-mid);
-
+      border: 2px dashed var(--color-primary-mid);
       border-radius: 50%;
-
       opacity: 0.35;
-
       pointer-events: none;
     }
-
-
-    /* =========================================================
-       HERO INNER
-       ========================================================= */
 
     .hero-inner {
       position: relative;
       z-index: 1;
-
       width: 100%;
       max-width: 1200px;
-
       margin: 0 auto;
-
       padding: 96px 24px 64px;
-
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 64px;
-
       align-items: center;
     }
 
-
-    /* =========================================================
-       HERO BADGE
-       ========================================================= */
-
+    /* ===== HERO BADGE ===== */
     .hero-eyebrow {
       display: inline-flex;
-
       align-items: center;
-
       gap: 7px;
-
       min-height: 40px;
-
       padding: 8px 16px;
-
       margin-bottom: 24px;
-
-      border: 0;
-
       border-radius: 999px;
-
-      background:
-        var(--color-primary-light);
+      background: var(--color-primary-light);
     }
 
-    .hero-logo {
-      display: block;
-
-      width: auto;
-      height: 22px;
-
-      object-fit: contain;
-    }
+    .hero-logo { width: auto; height: 22px; object-fit: contain; }
 
     .hero-eyebrow-text {
       color: var(--color-text);
-
       font-size: 14px;
       line-height: 20px;
-
       font-weight: 700;
-
       white-space: nowrap;
     }
 
-
-    /* =========================================================
-       HERO COPY
-       ========================================================= */
-
+    /* ===== HERO COPY ===== */
     .hero-title {
-      margin: 0 0 28px;
-
+      margin: 0 0 24px;
       color: var(--color-text);
-
       font-size: 56px;
       line-height: 1.24;
-
       font-weight: 800;
-
       letter-spacing: -0.02em;
     }
 
-    .hero-title-point {
-      color: var(--color-primary);
-    }
+    .hero-title-point { color: var(--color-primary); }
 
     .hero-description {
-      margin: 0 0 22px;
-
+      margin: 0 0 28px;
       color: var(--color-text-sub);
-
       font-size: 18px;
       line-height: 1.72;
-
       font-weight: 400;
-
       word-break: keep-all;
     }
 
-    .hero-gift {
-      margin: 0;
+    /* ===== 추첨 EVENT 카드 (글래스) ===== */
+    .gift-card {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      padding: 22px 26px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 20px 44px rgba(1, 78, 96, 0.14);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter: blur(14px) saturate(140%);
+    }
 
+    .gift-image {
+      width: 156px;
+      height: auto;
+      flex: none;
+      border-radius: 12px;
+    }
+
+    .gift-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 180px;
+      flex: 1 1 200px;
+    }
+
+    /* 배지 — 그라데이션 흐름 */
+    .gift-badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      height: 26px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: var(--color-white);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background-color: var(--color-text);
+      background-image: linear-gradient(100deg, #00E278, #019B98, #014E60, #00E278);
+      background-size: 300% 100%;
+      animation: gradientFlow 6s ease-in-out infinite;
+    }
+
+    .gift-title {
       color: var(--color-text);
-
-      font-size: 18px;
-      line-height: 1.72;
-
-      font-weight: 600;
-
+      font-size: 24px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: -0.01em;
       word-break: keep-all;
     }
 
+    .gift-title-point { color: var(--color-primary); }
 
-    /* =========================================================
-       HERO GRAPHIC
-       ========================================================= */
-
-    .hero-graphic {
-      position: relative;
-
-      height: 480px;
+    .gift-note {
+      color: var(--color-text-sub);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 500;
+      word-break: keep-all;
     }
+
+    /* ===== HERO GRAPHIC ===== */
+    .hero-graphic { position: relative; height: 480px; }
 
     .hero-wordmark {
       position: absolute;
-
       top: -8px;
       left: 0;
-
       color: transparent;
-
-      font-size:
-        clamp(
-          84px,
-          13vw,
-          150px
-        );
-
+      font-size: clamp(84px, 13vw, 150px);
       line-height: 1;
-
       font-weight: 800;
-
       letter-spacing: -0.03em;
-
-      -webkit-text-stroke:
-        2px var(--color-primary-mid);
-
+      -webkit-text-stroke: 2px var(--color-primary-mid);
       opacity: 0.45;
-
       user-select: none;
       pointer-events: none;
     }
 
-
-    /* =========================================================
-       BUBBLES
-       ========================================================= */
-
     .bubble-wrap {
       position: absolute;
-
       inset: 0;
-
       display: flex;
-
       flex-direction: column;
-
       justify-content: center;
-
       gap: 20px;
-
       padding-top: 40px;
     }
 
-
-    /* ---------------------------------------------------------
-       공통 말풍선
-       --------------------------------------------------------- */
-
     .bubble {
       display: flex;
-
       align-items: center;
-
       gap: 14px;
-
       padding: 20px 24px;
-
       font-size: 16px;
       line-height: 24px;
-
-      box-shadow:
-        0 12px 28px
-        rgba(1, 78, 96, 0.07);
+      box-shadow: 0 12px 28px rgba(1, 78, 96, 0.07);
     }
-
-
-    /* ---------------------------------------------------------
-       말풍선 1
-       --------------------------------------------------------- */
 
     .bubble-1 {
       align-self: flex-start;
-
       max-width: 88%;
-
-      background:
-        var(--color-white);
-
-      border:
-        1px solid
-        var(--color-bg-light);
-
-      border-radius:
-        22px 22px 22px 6px;
-
-      color:
-        var(--color-text);
-
+      background: var(--color-white);
+      border: 1px solid var(--color-bg-light);
+      border-radius: 22px 22px 22px 6px;
+      color: var(--color-text);
       font-size: 17px;
-
       font-weight: 700;
-
-      animation:
-        floatA
-        6s
-        ease-in-out
-        infinite;
+      animation: floatA 6s ease-in-out infinite;
     }
-
-
-    /* ---------------------------------------------------------
-       말풍선 2
-       --------------------------------------------------------- */
 
     .bubble-2 {
       align-self: flex-end;
-
       max-width: 78%;
-
-      background:
-        var(--color-primary);
-
-      border-radius:
-        22px 22px 6px 22px;
-
-      color:
-        var(--color-white);
-
+      background: var(--color-primary);
+      border-radius: 22px 22px 6px 22px;
+      color: var(--color-white);
       font-size: 17px;
-
       font-weight: 700;
-
-      box-shadow:
-        0 14px 30px
-        rgba(1, 155, 152, 0.24);
-
-      animation:
-        floatB
-        5.4s
-        ease-in-out
-        infinite;
+      box-shadow: 0 14px 30px rgba(1, 155, 152, 0.24);
+      animation: floatB 5.4s ease-in-out infinite;
     }
-
-
-    /* ---------------------------------------------------------
-       말풍선 3
-       --------------------------------------------------------- */
 
     .bubble-3 {
       align-self: flex-start;
-
       max-width: 72%;
-
-      background:
-        var(--color-primary-light);
-
-      border-radius:
-        22px 22px 22px 6px;
-
-      color:
-        var(--color-text);
-
+      background: var(--color-primary-light);
+      border-radius: 22px 22px 22px 6px;
+      color: var(--color-text);
       font-weight: 500;
-
-      animation:
-        floatA
-        6.6s
-        ease-in-out
-        infinite;
-
+      animation: floatA 6.6s ease-in-out infinite;
       animation-delay: -0.8s;
     }
 
-
-    /* ---------------------------------------------------------
-       전달 말풍선
-       --------------------------------------------------------- */
-
     .bubble-label {
       align-self: flex-end;
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 14px;
-
       max-width: 78%;
-
       padding: 20px 24px;
-
-      background:
-        var(--color-white);
-
-      border:
-        1px solid
-        var(--color-bg-light);
-
-      border-radius:
-        22px 22px 6px 22px;
-
-      color:
-        var(--color-text);
-
+      background: var(--color-white);
+      border: 1px solid var(--color-bg-light);
+      border-radius: 22px 22px 6px 22px;
+      color: var(--color-text);
       font-size: 16px;
       line-height: 24px;
-
       font-weight: 600;
-
-      box-shadow:
-        0 12px 28px
-        rgba(1, 78, 96, 0.07);
-
-      animation:
-        floatB
-        5.8s
-        ease-in-out
-        infinite;
-
+      box-shadow: 0 12px 28px rgba(1, 78, 96, 0.07);
+      animation: floatB 5.8s ease-in-out infinite;
       animation-delay: -1.2s;
     }
 
-
-    /* ---------------------------------------------------------
-       말풍선 아이콘
-       --------------------------------------------------------- */
-
     .bubble-icon {
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       width: 26px;
       height: 26px;
-
       flex: none;
     }
 
+    @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes floatB { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    @keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-    /* =========================================================
-       FLOAT ANIMATION
-       ========================================================= */
-
-    @keyframes floatA {
-      0%,
-      100% {
-        transform:
-          translateY(0);
-      }
-
-      50% {
-        transform:
-          translateY(-10px);
-      }
-    }
-
-    @keyframes floatB {
-      0%,
-      100% {
-        transform:
-          translateY(0);
-      }
-
-      50% {
-        transform:
-          translateY(8px);
-      }
-    }
-
-
-    /* =========================================================
-       FORM SECTION
-       ========================================================= */
-
-    .form-section {
-      width: 100%;
-
-      background:
-        var(--color-bg);
-    }
+    /* ===== FORM SECTION ===== */
+    .form-section { width: 100%; background: var(--color-bg); }
 
     .form-section-inner {
       width: 100%;
       max-width: 1200px;
-
       margin: 0 auto;
-
-      padding:
-        80px 24px 88px;
+      padding: 80px 24px 88px;
     }
 
-    .section-heading {
-      margin-bottom: 36px;
-
-      text-align: center;
-    }
+    .section-heading { margin-bottom: 36px; text-align: center; }
 
     .section-title {
       margin: 0 0 12px;
-
-      color:
-        var(--color-text);
-
+      color: var(--color-text);
       font-size: 32px;
       line-height: 1.4;
-
       font-weight: 800;
-
       letter-spacing: -0.01em;
-
-      text-align: center;
     }
 
-    .section-title-line {
-      display: inline-block;
-    }
+    .section-title-line { display: inline-block; }
 
     .section-description {
       margin: 0;
-
-      color:
-        var(--color-text-sub);
-
+      color: var(--color-text-sub);
       font-size: 17px;
       line-height: 1.7;
-
-      font-weight: 400;
-
       word-break: keep-all;
     }
 
-
-    /* =========================================================
-       GOOGLE APPS SCRIPT FRAME
-       ========================================================= */
-
     .form-frame {
       position: relative;
-
       width: 100%;
-
-      margin: 0;
-      padding: 0;
-
-      background:
-        transparent;
-
-      border:
-        1px solid var(--color-border);
-
+      background: transparent;
+      border: 1px solid var(--color-border);
       border-radius: 24px;
-
-      box-shadow: none;
-
       overflow: hidden;
     }
 
-
-    /* ---------------------------------------------------------
-       LOADING
-       --------------------------------------------------------- */
-
     .form-loader {
       position: absolute;
-
       top: 0;
       left: 0;
-
       z-index: 10;
-
       width: 100%;
       height: 100%;
-
       min-height: 420px;
-
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       justify-content: flex-start;
-
-      padding:
-        120px 24px 40px;
-
-      background:
-        linear-gradient(
-          160deg,
-          #f1ffff 0%,
-          #ffffff 58%,
-          #fbfbfb 100%
-        );
-
+      padding: 120px 24px 40px;
+      background: linear-gradient(160deg, #f1ffff 0%, #ffffff 58%, #fbfbfb 100%);
       opacity: 1;
       visibility: visible;
-
-      transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
 
-    .form-loader.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-
-      pointer-events: none;
-    }
+    .form-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .loader-title {
       margin-bottom: 24px;
-
       color: var(--color-text);
-
       font-size: 18px;
       line-height: 26px;
-
       font-weight: 800;
-
       letter-spacing: 0.08em;
     }
 
     .loader-bar {
       position: relative;
-
-      width:
-        min(
-          380px,
-          72%
-        );
-
+      width: min(380px, 72%);
       height: 18px;
-
       padding: 3px;
-
       overflow: hidden;
-
-      border:
-        2px solid
-        var(--color-primary);
-
+      border: 2px solid var(--color-primary);
       border-radius: 999px;
-
-      background:
-        var(--color-white);
+      background: var(--color-white);
     }
 
     .loader-bar-progress {
       display: block;
-
       width: 42%;
       height: 100%;
-
       border-radius: 999px;
-
-      background:
-        var(--color-primary);
-
-      animation:
-        loadingProgress
-        1.5s
-        ease-in-out
-        infinite;
+      background: var(--color-primary);
+      animation: loadingProgress 1.5s ease-in-out infinite;
     }
 
     .loader-description {
-      margin:
-        20px 0 0;
-
-      color:
-        var(--color-text-sub);
-
+      margin: 20px 0 0;
+      color: var(--color-text-sub);
       font-size: 15px;
       line-height: 24px;
-
       font-weight: 500;
-
       text-align: center;
     }
 
     @keyframes loadingProgress {
-      0% {
-        transform:
-          translateX(-125%);
-      }
-
-      50% {
-        transform:
-          translateX(75%);
-      }
-
-      100% {
-        transform:
-          translateX(245%);
-      }
+      0% { transform: translateX(-125%); }
+      50% { transform: translateX(75%); }
+      100% { transform: translateX(245%); }
     }
 
     #opinionFrame {
       display: block;
-
       width: 100%;
       height: 1180px;
-
       margin: 0;
       padding: 0;
-
       border: 0;
-      border-radius: 0;
-
-      background:
-        transparent;
-
+      background: transparent;
       overflow: hidden;
     }
 
-
-    /* =========================================================
-       NOTICE
-       ========================================================= */
-
-    .notice-section {
-      width: 100%;
-
-      background:
-        var(--color-bg-light);
-    }
+    /* ===== NOTICE ===== */
+    .notice-section { width: 100%; background: var(--color-bg-light); }
 
     .notice-inner {
       width: 100%;
       max-width: 900px;
-
       margin: 0 auto;
-
-      padding:
-        88px 24px;
+      padding: 88px 24px;
     }
 
     .notice-heading {
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
       margin-bottom: 28px;
     }
 
     .notice-icon {
       width: 36px;
       height: 36px;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       flex: none;
-
       border-radius: 50%;
-
-      background:
-        var(--color-accent-light);
-
-      color:
-        var(--color-accent);
-
+      background: var(--color-accent-light);
+      color: var(--color-accent);
       font-size: 19px;
-
       font-weight: 700;
     }
 
     .notice-title {
       margin: 0;
-
-      color:
-        var(--color-text);
-
+      color: var(--color-text);
       font-size: 28px;
       line-height: 1.4;
-
       font-weight: 800;
-
       letter-spacing: -0.01em;
     }
 
     .notice-list {
       list-style: none;
-
       margin: 0;
       padding: 0;
-
-      border-top:
-        1px solid #c8c8c8;
+      border-top: 1px solid #c8c8c8;
     }
 
     .notice-item {
       display: flex;
-
       align-items: flex-start;
-
       gap: 14px;
-
-      padding:
-        20px 4px;
-
-      border-bottom:
-        1px solid #c8c8c8;
-
-      color:
-        var(--color-text-sub);
-
+      padding: 20px 4px;
+      border-bottom: 1px solid #c8c8c8;
+      color: var(--color-text-sub);
       font-size: 17px;
       line-height: 1.65;
-
-      font-weight: 400;
-
       word-break: keep-all;
     }
 
     .notice-dot {
       width: 6px;
       height: 6px;
-
       margin-top: 10px;
-
       flex: none;
-
       border-radius: 50%;
-
-      background:
-        var(--color-primary);
+      background: var(--color-primary);
     }
 
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      width: 100%;
-
-      background:
-        var(--color-text);
-
-      color:
-        var(--color-white);
-    }
+    /* ===== FOOTER ===== */
+    footer { width: 100%; background: var(--color-text); color: var(--color-white); }
 
     .footer-inner {
       width: 100%;
       max-width: 1200px;
-
       margin: 0 auto;
-
-      padding:
-        64px 24px;
-
+      padding: 64px 24px;
       display: flex;
-
       align-items: flex-end;
-
       justify-content: space-between;
-
       gap: 40px;
     }
 
-    .footer-logo {
-      display: inline-flex;
-
-      align-items: center;
-
-      margin-bottom: 20px;
-
-      padding: 0;
-
-      border: 0;
-      border-radius: 0;
-
-      background:
-        transparent;
-    }
-
-    .footer-logo img {
-      display: block;
-
-      width: auto;
-      height: 34px;
-
-      object-fit: contain;
-    }
+    .footer-logo { display: inline-flex; align-items: center; margin-bottom: 20px; }
+    .footer-logo img { width: auto; height: 34px; object-fit: contain; }
 
     .footer-text {
       margin: 0;
-
-      color:
-        var(--color-primary-light);
-
+      color: var(--color-primary-light);
       font-size: 16px;
       line-height: 1.7;
-
-      font-weight: 400;
-
       word-break: keep-all;
     }
 
     .copyright {
-      color:
-        var(--color-primary-mid);
-
+      color: var(--color-primary-mid);
       font-size: 14px;
       line-height: 22px;
-
-      font-weight: 400;
-
       white-space: nowrap;
     }
 
-
-    /* =========================================================
-       TABLET
-       ========================================================= */
-
+    /* ===== TABLET ===== */
     @media (max-width: 1024px) {
-
-      .hero-inner {
-        grid-template-columns:
-          1fr;
-
-        gap: 40px;
-
-        padding:
-          56px 20px 64px;
-      }
-
-      .hero-title {
-        font-size: 40px;
-        line-height: 1.28;
-      }
-
-      .hero-description,
-      .hero-gift {
-        font-size: 17px;
-      }
-
-      .hero-wordmark {
-        top: -4px;
-        left: 0;
-
-        font-size:
-          min(
-            88px,
-            15vw
-          );
-      }
-
-      .hero-graphic {
-        height: 500px;
-      }
-
-      .form-section-inner {
-        padding:
-          56px 20px 64px;
-      }
-
-      .section-title {
-        font-size: 27px;
-      }
-
-      .section-description {
-        font-size: 16px;
-      }
-
-      .form-frame {
-        margin: 0;
-        padding: 0;
-
-        border: 0;
-        border-radius: 0;
-
-        background:
-          transparent;
-
-        box-shadow: none;
-      }
-
-      #opinionFrame {
-        border: 0;
-        border-radius: 0;
-
-        background:
-          transparent;
-      }
-
-      .notice-inner {
-        padding:
-          56px 20px;
-      }
-
-      .notice-title {
-        font-size: 26px;
-      }
-
-      .notice-item {
-        font-size: 16px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 28px;
-
-        padding:
-          48px 20px;
-      }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 56px 20px 64px; }
+      .hero-title { font-size: 40px; line-height: 1.28; }
+      .hero-description { font-size: 17px; }
+      .gift-title { font-size: 22px; }
+      .hero-wordmark { top: -4px; font-size: min(88px, 15vw); }
+      .hero-graphic { height: 500px; }
+      .form-section-inner { padding: 56px 20px 64px; }
+      .section-title { font-size: 27px; }
+      .section-description { font-size: 16px; }
+      .form-frame { border: 0; border-radius: 0; background: transparent; }
+      .notice-inner { padding: 56px 20px; }
+      .notice-title { font-size: 26px; }
+      .notice-item { font-size: 16px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 28px; padding: 48px 20px; }
     }
 
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
+    /* ===== MOBILE ===== */
     @media (max-width: 560px) {
-
-      .hero-inner {
-        padding:
-          44px 20px 52px;
-      }
-
-      .hero-eyebrow {
-        min-height: 38px;
-
-        padding:
-          7px 13px;
-      }
-
-      .hero-logo {
-        height: 19px;
-      }
-
-      .hero-eyebrow-text {
-        font-size: 13px;
-      }
-
-      .hero-title {
-        margin-bottom: 22px;
-
-        font-size: 32px;
-      }
-
-      .hero-description,
-      .hero-gift {
-        font-size: 16px;
-        line-height: 1.7;
-      }
-
-      .hero-graphic {
-        height: 440px;
-      }
-
-      .hero-wordmark {
-        font-size: 68px;
-      }
-
-      .bubble {
-        padding:
-          18px 20px;
-      }
-
-      .bubble-1,
-      .bubble-2 {
-        font-size: 16px;
-      }
-
-      .bubble-label {
-        padding:
-          18px 20px;
-
-        font-size: 15px;
-      }
-
-      .form-section-inner {
-        padding:
-          48px 16px 56px;
-      }
-
-      .section-heading {
-        margin-bottom: 28px;
-      }
-
-      .section-title {
-        font-size: 24px;
-      }
-
-      .section-description {
-        font-size: 15px;
-      }
-
-      .form-frame {
-        width: 100%;
-
-        margin: 0;
-        padding: 0;
-
-        border: 0;
-        border-radius: 0;
-
-        background:
-          transparent;
-
-        box-shadow: none;
-      }
-
-      #opinionFrame {
-        width: 100%;
-
-        margin: 0;
-        padding: 0;
-
-        border: 0;
-        border-radius: 0;
-
-        background:
-          transparent;
-      }
-
-      .notice-inner {
-        padding:
-          52px 20px;
-      }
-
-      .notice-title {
-        font-size: 24px;
-      }
-
-      .notice-item {
-        gap: 12px;
-
-        padding:
-          18px 2px;
-
-        font-size: 15px;
-      }
-
-      .footer-inner {
-        padding:
-          44px 20px;
-      }
-
-      .footer-logo img {
-        height: 30px;
-      }
-
-      .footer-text {
-        font-size: 15px;
-      }
-
-      .copyright {
-        font-size: 13px;
-      }
+      .hero-inner { padding: 44px 20px 52px; }
+      .hero-eyebrow { min-height: 38px; padding: 7px 13px; }
+      .hero-logo { height: 19px; }
+      .hero-eyebrow-text { font-size: 13px; }
+      .hero-title { margin-bottom: 22px; font-size: 32px; }
+      .hero-description { font-size: 16px; line-height: 1.7; }
+      .gift-card { gap: 16px; padding: 18px 20px; }
+      .gift-image { width: 126px; }
+      .gift-title { font-size: 20px; }
+      .gift-note { font-size: 14px; }
+      .hero-graphic { height: 440px; }
+      .hero-wordmark { font-size: 68px; }
+      .bubble { padding: 18px 20px; }
+      .bubble-1, .bubble-2 { font-size: 16px; }
+      .bubble-label { padding: 18px 20px; font-size: 15px; }
+      .form-section-inner { padding: 48px 16px 56px; }
+      .section-heading { margin-bottom: 28px; }
+      .section-title { font-size: 24px; }
+      .section-description { font-size: 15px; }
+      .form-frame { border: 0; border-radius: 0; background: transparent; }
+      .notice-inner { padding: 52px 20px; }
+      .notice-title { font-size: 24px; }
+      .notice-item { gap: 12px; padding: 18px 2px; font-size: 15px; }
+      .footer-inner { padding: 44px 20px; }
+      .footer-logo img { height: 30px; }
+      .footer-text { font-size: 15px; }
+      .copyright { font-size: 13px; }
     }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================================================
-       HERO
-       ========================================================= -->
-
+  <!-- ===== HERO ===== -->
   <header class="hero">
 
+    <div class="hero-grid"></div>
     <div class="hero-decoration-top"></div>
     <div class="hero-decoration-bottom"></div>
 
-
     <div class="hero-inner">
-
-      <!-- =====================================================
-           HERO TEXT
-           ===================================================== -->
 
       <div class="hero-copy">
 
         <div class="hero-eyebrow">
-
-          <img
-            src="./dankkume-logo.png"
-            alt="단꿈e"
-            class="hero-logo"
-          >
-
-          <span class="hero-eyebrow-text">
-            · 고객 의견 수집
-          </span>
-
+          <img src="./dankkume-logo.png" alt="단꿈e" class="hero-logo">
+          <span class="hero-eyebrow-text">· 고객 의견 수집</span>
         </div>
 
-
         <h1 class="hero-title">
-
           단꿈에게<br>
-
-          <span class="hero-title-point">
-            말해주세요.
-          </span>
-
+          <span class="hero-title-point">말해주세요.</span>
         </h1>
-
 
         <p class="hero-description">
           단꿈에게 바라는 이야기를 편하게 남겨주세요.<br>
@@ -1294,151 +619,60 @@
           더 나은 단꿈으로 만들어가겠습니다.
         </p>
 
+        <!-- 추첨 EVENT 카드 -->
+        <div class="gift-card">
 
-        <p class="hero-gift">
-          매월 소중한 의견을 남겨주신 회원님들에게<br>
-          추첨을 통해 감사의 선물을 드립니다.
-        </p>
+          <img src="./naverpay-10000.png" alt="네이버페이 1만원" class="gift-image">
+
+          <div class="gift-body">
+            <span class="gift-badge">매월 추첨 EVENT</span>
+
+            <strong class="gift-title">
+              네이버페이 1만원 <span class="gift-title-point">10명</span> 추첨
+            </strong>
+
+            <span class="gift-note">
+              소중한 의견을 남겨주신 회원님들께<br>
+              매월 감사의 선물을 드립니다.
+            </span>
+          </div>
+
+        </div>
 
       </div>
 
-
-      <!-- =====================================================
-           HERO GRAPHIC
-           ===================================================== -->
-
+      <!-- HERO GRAPHIC -->
       <div class="hero-graphic">
 
-        <div
-          class="hero-wordmark"
-          aria-hidden="true"
-        >
-          feedback
-        </div>
-
+        <div class="hero-wordmark" aria-hidden="true">feedback</div>
 
         <div class="bubble-wrap">
 
-
-          <!-- 첫 번째 말풍선 -->
-
           <div class="bubble bubble-1">
-
             <span class="bubble-icon">
-
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#019B98"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-
-                <path
-                  d="M4 5h16v11H9l-5 4V5Z"
-                ></path>
-
-              </svg>
-
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#019B98" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"></path></svg>
             </span>
-
             이런 점이 불편했어요
-
           </div>
-
-
-          <!-- 두 번째 말풍선 -->
 
           <div class="bubble bubble-2">
-
             <span class="bubble-icon">
-
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-
-                <path
-                  d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"
-                ></path>
-
-              </svg>
-
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"></path></svg>
             </span>
-
             이런 게 있으면 좋겠어요
-
           </div>
-
-
-          <!-- 세 번째 말풍선 -->
 
           <div class="bubble bubble-3">
-
             <span class="bubble-icon">
-
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#014E60"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-
-                <path
-                  d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"
-                ></path>
-
-              </svg>
-
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#014E60" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path></svg>
             </span>
-
             응원의 이야기도 좋아요
-
           </div>
-
-
-          <!-- 전달 안내 -->
 
           <div class="bubble-label">
-
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#019B98"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-
-              <path
-                d="M4 4l16 8-16 8 3-8-3-8Z"
-              ></path>
-
-            </svg>
-
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#019B98" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8-3-8Z"></path></svg>
             단꿈에 전달됩니다
-
           </div>
-
 
         </div>
 
@@ -1449,83 +683,30 @@
   </header>
 
 
-  <!-- =========================================================
-       MAIN
-       ========================================================= -->
-
   <main>
 
-
-    <!-- =======================================================
-         의견 작성
-         ======================================================= -->
-
+    <!-- ===== 의견 작성 ===== -->
     <section class="form-section">
-
       <div class="form-section-inner">
 
         <div class="section-heading">
-
           <h2 class="section-title">
-
-            <span class="section-title-line">
-              — 의견을 들려주세요 —
-            </span>
-
+            <span class="section-title-line">— 의견을 들려주세요 —</span>
           </h2>
-
-
           <p class="section-description">
             문의부터 강의 수강 후기까지 자유롭게 남겨주세요.
           </p>
-
         </div>
 
+        <div id="formFrame" class="form-frame">
 
-        <!-- ===================================================
-             GOOGLE APPS SCRIPT
-             =================================================== -->
-
-        <div
-          id="formFrame"
-          class="form-frame"
-        >
-
-          <!-- ===============================================
-               LOADING
-               =============================================== -->
-
-          <div
-            id="formLoader"
-            class="form-loader"
-            role="status"
-            aria-live="polite"
-          >
-
-            <div class="loader-title">
-              NOW LOADING ...
-            </div>
-
-            <div
-              class="loader-bar"
-              aria-hidden="true"
-            >
+          <div id="formLoader" class="form-loader" role="status" aria-live="polite">
+            <div class="loader-title">NOW LOADING ...</div>
+            <div class="loader-bar" aria-hidden="true">
               <span class="loader-bar-progress"></span>
             </div>
-
-            <p
-              id="loaderDescription"
-              class="loader-description"
-            >
-              잠시만 기다려 주세요.
-            </p>
-
+            <p id="loaderDescription" class="loader-description">잠시만 기다려 주세요.</p>
           </div>
-
-
-          <!-- ===============================================
-               GOOGLE APPS SCRIPT
-               =============================================== -->
 
           <iframe
             id="opinionFrame"
@@ -1538,309 +719,121 @@
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =======================================================
-         유의사항
-         ======================================================= -->
-
+    <!-- ===== 유의사항 ===== -->
     <section class="notice-section">
-
       <div class="notice-inner">
 
         <div class="notice-heading">
-
-          <span
-            class="notice-icon"
-            aria-hidden="true"
-          >
-            !
-          </span>
-
-
-          <h2 class="notice-title">
-            유의사항
-          </h2>
-
+          <span class="notice-icon" aria-hidden="true">!</span>
+          <h2 class="notice-title">유의사항</h2>
         </div>
-
 
         <ul class="notice-list">
 
-
           <li class="notice-item">
-
             <span class="notice-dot"></span>
-
-            <span>
-              보내주신 의견은 더 나은 서비스와 콘텐츠 개선을 위해 활용됩니다.
-            </span>
-
-          </li>
-
-
-          <li class="notice-item">
-
-            <span class="notice-dot"></span>
-
-            <span>
-              보내주신 의견에 대한 개별 답변은 제공되지 않습니다.
-            </span>
-
-          </li>
-
-
-          <li class="notice-item">
-
-            <span class="notice-dot"></span>
-
-            <span>
-              감사의 선물은 회원 정보에 등록된 학부모 휴대폰 번호로 발송됩니다.    
-            </span>
-
+            <span>보내주신 의견은 더 나은 서비스와 콘텐츠 개선을 위해 활용됩니다.</span>
           </li>
 
           <li class="notice-item">
-
             <span class="notice-dot"></span>
-
-            <span>
-              회원 탈퇴 또는 부정확한 회원 정보로 인한 오발송의 경우 재발송되지 않습니다.
-            </span>
-
+            <span>보내주신 의견에 대한 개별 답변은 제공되지 않습니다.</span>
           </li>
 
-
-          
           <li class="notice-item">
-
             <span class="notice-dot"></span>
-
-            <span>
-              강의 수강 후기는 단꿈e 공식 사이트 및 온·오프라인 홍보 등
-              마케팅 목적으로 활용될 수 있습니다.
-            </span>
-
+            <span>감사의 선물은 매월 추첨을 통해 10명에게 네이버페이 1만원권으로 지급되며, 회원 정보에 등록된 학부모 휴대폰 번호로 발송됩니다.</span>
           </li>
 
+          <li class="notice-item">
+            <span class="notice-dot"></span>
+            <span>회원 탈퇴 또는 부정확한 회원 정보로 인한 오발송의 경우 재발송되지 않습니다.</span>
+          </li>
 
           <li class="notice-item">
-
             <span class="notice-dot"></span>
+            <span>강의 수강 후기는 단꿈e 공식 사이트 및 온·오프라인 홍보 등 마케팅 목적으로 활용될 수 있습니다.</span>
+          </li>
 
-            <span>
-              욕설, 비방, 개인정보가 포함된 내용은 작성하지 말아 주세요.
-            </span>
-
+          <li class="notice-item">
+            <span class="notice-dot"></span>
+            <span>욕설, 비방, 개인정보가 포함된 내용은 작성하지 말아 주세요.</span>
           </li>
 
         </ul>
 
       </div>
-
     </section>
 
   </main>
 
 
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
-
+  <!-- ===== FOOTER ===== -->
   <footer>
-
     <div class="footer-inner">
 
       <div>
-
         <div class="footer-logo">
-
-          <img
-            src="./dankkume-logo_w.png"
-            alt="단꿈e"
-          >
-
+          <img src="./dankkume-logo_w.png" alt="단꿈e">
         </div>
-
 
         <p class="footer-text">
           여러분의 소중한 의견을 귀담아듣고<br>
           더 나은 단꿈을 만들어가겠습니다.
         </p>
-
       </div>
 
-
-      <div class="copyright">
-        © 2026 단꿈아이. All rights reserved.
-      </div>
+      <div class="copyright">© 2026 단꿈아이. All rights reserved.</div>
 
     </div>
-
   </footer>
 
 
-  <!-- =========================================================
-       GOOGLE APPS SCRIPT
-       IFRAME LOADING + AUTO HEIGHT
-       ========================================================= -->
-
   <script>
+    const opinionFrame = document.getElementById('opinionFrame');
+    const formLoader = document.getElementById('formLoader');
+    const loaderDescription = document.getElementById('loaderDescription');
 
-    /* =========================================================
-       ELEMENTS
-       ========================================================= */
-
-    const opinionFrame =
-      document.getElementById(
-        'opinionFrame'
-      );
-
-    const formLoader =
-      document.getElementById(
-        'formLoader'
-      );
-
-    const loaderDescription =
-      document.getElementById(
-        'loaderDescription'
-      );
-
-    let loaderClosed =
-      false;
-
-
-    /* =========================================================
-       HIDE LOADER
-       ========================================================= */
+    let loaderClosed = false;
 
     function hideFormLoader() {
+      if (loaderClosed || !formLoader) return;
 
-      if (
-        loaderClosed ||
-        !formLoader
-      ) {
-        return;
-      }
+      loaderClosed = true;
+      formLoader.classList.add('is-hidden');
 
-      loaderClosed =
-        true;
-
-      formLoader
-        .classList
-        .add(
-          'is-hidden'
-        );
-
-      setTimeout(
-        function () {
-
-          if (
-            formLoader &&
-            formLoader.parentNode
-          ) {
-            formLoader
-              .parentNode
-              .removeChild(
-                formLoader
-              );
-          }
-
-        },
-        450
-      );
+      setTimeout(function () {
+        if (formLoader && formLoader.parentNode) {
+          formLoader.parentNode.removeChild(formLoader);
+        }
+      }, 450);
     }
 
+    opinionFrame.addEventListener('load', function () {
+      setTimeout(hideFormLoader, 300);
+    });
 
-    /* =========================================================
-       IFRAME LOAD
-       ========================================================= */
+    setTimeout(function () {
+      if (loaderClosed || !loaderDescription) return;
+      loaderDescription.innerHTML =
+        '의견 작성 화면을 준비하고 있어요.<br>조금만 더 기다려 주세요.';
+    }, 5000);
 
-    opinionFrame.addEventListener(
-      'load',
-      function () {
+    window.addEventListener('message', function (event) {
+      const data = event.data;
+      if (!data) return;
 
-        setTimeout(
-          hideFormLoader,
-          300
-        );
+      const height = data.dankkumeHeight ||
+        (data.type === 'dankkume:height' ? data.height : null);
 
+      if (height && Number(height) > 200) {
+        opinionFrame.style.height = Math.ceil(Number(height)) + 24 + 'px';
+        hideFormLoader();
       }
-    );
-
-
-    /* =========================================================
-       LOADING DELAY MESSAGE
-       ========================================================= */
-
-    setTimeout(
-      function () {
-
-        if (
-          loaderClosed ||
-          !loaderDescription
-        ) {
-          return;
-        }
-
-        loaderDescription.innerHTML =
-          '의견 작성 화면을 준비하고 있어요.<br>'
-          +
-          '조금만 더 기다려 주세요.';
-
-      },
-      5000
-    );
-
-
-    /* =========================================================
-       GOOGLE APPS SCRIPT
-       IFRAME AUTO HEIGHT
-       ========================================================= */
-
-    window.addEventListener(
-      'message',
-      function (event) {
-
-        const data =
-          event.data;
-
-        if (!data) {
-          return;
-        }
-
-        const height =
-          data.dankkumeHeight
-          ||
-          (
-            data.type ===
-              'dankkume:height'
-              ? data.height
-              : null
-          );
-
-        if (
-          height &&
-          Number(height) > 200
-        ) {
-
-          opinionFrame.style.height =
-            Math.ceil(
-              Number(height)
-            )
-            +
-            24
-            +
-            'px';
-
-          hideFormLoader();
-        }
-
-      }
-    );
-
+    });
   </script>
 
 </body>
