@@ -29,6 +29,11 @@
       --white: #FFFFFF;
       --radius: 24px;
       --shadow-soft: 0 12px 28px rgba(60, 50, 35, 0.08);
+
+      /* 히어로 배경 효과 : 쿨 블루 워시 */
+      --fx-cool: #7E93B8;
+      --fx-cool-soft: #DCE6F2;
+      --fx-strength: 1;
     }
 
     * { box-sizing: border-box; }
@@ -56,8 +61,45 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* 쿨 블루 워시 — 우측 상단 헤이즈 */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 100% 90% at 88% 6%,
+        rgba(126, 147, 184, 0.34) 0%,
+        rgba(126, 147, 184, 0) 60%);
+      filter: blur(26px);
+    }
+
+    /* 쿨 블루 워시 — 하단 대각 워시 */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(160deg,
+        rgba(220, 230, 242, 0) 35%,
+        rgba(220, 230, 242, 0.75) 100%);
+    }
+
+    /* 그레인 오버레이 */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.45'/></svg>");
+    }
+
     .hero-decoration-top {
       position: absolute;
+      z-index: 1;
       top: -150px;
       right: -130px;
       width: 420px;
@@ -70,6 +112,7 @@
 
     .hero-decoration-bottom {
       position: absolute;
+      z-index: 1;
       bottom: -90px;
       left: -70px;
       width: 220px;
@@ -82,7 +125,7 @@
 
     .hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
@@ -280,6 +323,10 @@
     @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
     @keyframes floatB { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
     @keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bubble, .bubble-label, .gift-badge { animation: none !important; }
+    }
 
     /* ===== FORM SECTION ===== */
     .form-section { width: 100%; background: var(--bg); }
@@ -526,6 +573,7 @@
   <!-- ===== HERO ===== -->
   <header class="hero">
 
+    <div class="hero-grain" aria-hidden="true"></div>
     <div class="hero-decoration-top"></div>
     <div class="hero-decoration-bottom"></div>
 
