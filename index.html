@@ -14,22 +14,22 @@
     /* ===== ROOT ===== */
     :root {
       --color-bg: #FFFFFF;
-      --color-bg-light: #F1F1F1;
+      --color-bg-light: #F3F5F3;
 
-      --color-primary: #019B98;
-      --color-primary-light: #C1FFFF;
-      --color-primary-mid: #55CCC9;
+      --color-primary: #64876D;
+      --color-primary-light: #E4EBE5;
+      --color-primary-mid: #A6BAAB;
 
-      --color-text: #014E60;
-      --color-text-sub: #3F7A8D;
+      --color-text: #344C3B;
+      --color-text-sub: #66786B;
 
-      --color-accent: #dd0025;
-      --color-accent-light: #ffbfab;
+      --color-accent: #C86155;
+      --color-accent-light: #F6E4E1;
 
-      --color-naver: #00E278;
+      --color-naver: #03C75A;
 
       --color-white: #ffffff;
-      --color-border: #D9DFE1;
+      --color-border: #DCE3DE;
     }
 
     /* ===== RESET ===== */
@@ -54,7 +54,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: #FBFEFE;
+      background: #F8FAF8;
       border-bottom: 1px solid var(--color-bg-light);
     }
 
@@ -64,8 +64,8 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(to right, rgba(1, 155, 152, 0.10) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(1, 155, 152, 0.10) 1px, transparent 1px);
+        linear-gradient(to right, rgba(100, 135, 109, 0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 135, 109, 0.10) 1px, transparent 1px);
       background-size: 48px 48px;
       -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
       mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
@@ -161,7 +161,7 @@
       background: rgba(255, 255, 255, 0.55);
       border: 1px solid rgba(255, 255, 255, 0.85);
       border-radius: 22px;
-      box-shadow: 0 20px 44px rgba(1, 78, 96, 0.14);
+      box-shadow: 0 20px 44px rgba(52, 76, 59, 0.12);
       -webkit-backdrop-filter: blur(14px) saturate(140%);
       backdrop-filter: blur(14px) saturate(140%);
     }
@@ -194,7 +194,7 @@
       font-weight: 800;
       letter-spacing: 0.02em;
       background-color: var(--color-text);
-      background-image: linear-gradient(100deg, #00E278, #019B98, #014E60, #00E278);
+      background-image: linear-gradient(100deg, #03C75A, #64876D, #344C3B, #03C75A);
       background-size: 300% 100%;
       animation: gradientFlow 6s ease-in-out infinite;
     }
@@ -253,7 +253,7 @@
       padding: 20px 24px;
       font-size: 16px;
       line-height: 24px;
-      box-shadow: 0 12px 28px rgba(1, 78, 96, 0.07);
+      box-shadow: 0 12px 28px rgba(52, 76, 59, 0.08);
     }
 
     .bubble-1 {
@@ -276,7 +276,7 @@
       color: var(--color-white);
       font-size: 17px;
       font-weight: 700;
-      box-shadow: 0 14px 30px rgba(1, 155, 152, 0.24);
+      box-shadow: 0 14px 30px rgba(100, 135, 109, 0.24);
       animation: floatB 5.4s ease-in-out infinite;
     }
 
@@ -305,7 +305,7 @@
       font-size: 16px;
       line-height: 24px;
       font-weight: 600;
-      box-shadow: 0 12px 28px rgba(1, 78, 96, 0.07);
+      box-shadow: 0 12px 28px rgba(52, 76, 59, 0.08);
       animation: floatB 5.8s ease-in-out infinite;
       animation-delay: -1.2s;
     }
@@ -376,7 +376,7 @@
       align-items: center;
       justify-content: flex-start;
       padding: 120px 24px 40px;
-      background: linear-gradient(160deg, #f1ffff 0%, #ffffff 58%, #fbfbfb 100%);
+      background: linear-gradient(160deg, #F0F5F1 0%, #ffffff 58%, #FAFBFA 100%);
       opacity: 1;
       visibility: visible;
       transition: opacity 0.35s ease, visibility 0.35s ease;
@@ -483,7 +483,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      border-top: 1px solid #c8c8c8;
+      border-top: 1px solid #D5DDD7;
     }
 
     .notice-item {
@@ -491,7 +491,7 @@
       align-items: flex-start;
       gap: 14px;
       padding: 20px 4px;
-      border-bottom: 1px solid #c8c8c8;
+      border-bottom: 1px solid #D5DDD7;
       color: var(--color-text-sub);
       font-size: 17px;
       line-height: 1.65;
@@ -650,7 +650,7 @@
 
           <div class="bubble bubble-1">
             <span class="bubble-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#019B98" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64876D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"></path></svg>
             </span>
             이런 점이 불편했어요
           </div>
@@ -664,13 +664,13 @@
 
           <div class="bubble bubble-3">
             <span class="bubble-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#014E60" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#344C3B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path></svg>
             </span>
             응원의 이야기도 좋아요
           </div>
 
           <div class="bubble-label">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#019B98" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8-3-8Z"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64876D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8-3-8Z"></path></svg>
             단꿈에 전달됩니다
           </div>
 
