@@ -11,75 +11,60 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/whitedev7773/Paperlogy/paperlogy.css">
 
   <style>
-    /* ===== ROOT ===== */
+    /* ===== TOKENS (크림 아이보리) ===== */
     :root {
-      --color-bg: #FFFFFF;
-      --color-bg-light: #F3F5F3;
-
-      --color-primary: #64876D;
-      --color-primary-light: #E4EBE5;
-      --color-primary-mid: #A6BAAB;
-
-      --color-text: #344C3B;
-      --color-text-sub: #66786B;
-
-      --color-accent: #C86155;
-      --color-accent-light: #F6E4E1;
-
-      --color-naver: #03C75A;
-
-      --color-white: #ffffff;
-      --color-border: #DCE3DE;
+      --primary: #B4552F;
+      --primary-deep: #8F4022;
+      --ink: #2B2A26;
+      --sub: #6A6558;
+      --light: #EFE6D6;
+      --tint: #F6F0E4;
+      --bg: #FFFFFF;
+      --border: #E6DCCB;
+      --border-strong: #DCCFB8;
+      --muted: #C2B393;
+      --accent: #2B2A26;
+      --accent-light: #EFE6D6;
+      --naver: #03C75A;
+      --white: #FFFFFF;
+      --radius: 24px;
+      --shadow-soft: 0 12px 28px rgba(60, 50, 35, 0.08);
     }
 
-    /* ===== RESET ===== */
     * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
-      background: var(--color-bg);
-      color: var(--color-text);
+      background: var(--bg);
+      color: var(--ink);
       font-family: "Paperlogy", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     body { overflow-x: hidden; }
     img { display: block; max-width: 100%; }
-    a { color: var(--color-primary); text-decoration: none; }
-    a:hover { color: var(--color-text); }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--ink); }
 
     /* ===== HERO ===== */
     .hero {
       position: relative;
       overflow: hidden;
-      background: #F8FAF8;
-      border-bottom: 1px solid var(--color-bg-light);
-    }
-
-    /* 라인 그리드 배경 */
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(to right, rgba(100, 135, 109, 0.10) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(100, 135, 109, 0.10) 1px, transparent 1px);
-      background-size: 48px 48px;
-      -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
-      mask-image: radial-gradient(80% 70% at 50% 40%, #000 30%, transparent 100%);
+      background: linear-gradient(180deg, #FBF7EF 0%, var(--tint) 100%);
+      border-bottom: 1px solid var(--border);
     }
 
     .hero-decoration-top {
       position: absolute;
-      top: -140px;
-      right: -120px;
+      top: -150px;
+      right: -130px;
       width: 420px;
       height: 420px;
       border-radius: 50%;
-      background: var(--color-primary-light);
-      opacity: 0.35;
+      background: var(--light);
+      opacity: 0.55;
       pointer-events: none;
     }
 
@@ -89,7 +74,7 @@
       left: -70px;
       width: 220px;
       height: 220px;
-      border: 2px dashed var(--color-primary-mid);
+      border: 2px dashed var(--muted);
       border-radius: 50%;
       opacity: 0.35;
       pointer-events: none;
@@ -101,77 +86,71 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 96px 24px 64px;
+      padding: 88px 24px 72px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 56px;
       align-items: center;
     }
 
-    /* ===== HERO BADGE ===== */
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      min-height: 40px;
+      gap: 8px;
       padding: 8px 16px;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
       border-radius: 999px;
-      background: var(--color-primary-light);
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 16px rgba(60, 50, 35, 0.06);
     }
 
-    .hero-logo { width: auto; height: 22px; object-fit: contain; }
+    .hero-logo { width: auto; height: 21px; object-fit: contain; }
 
     .hero-eyebrow-text {
-      color: var(--color-text);
+      color: var(--primary-deep);
       font-size: 14px;
       line-height: 20px;
       font-weight: 700;
       white-space: nowrap;
     }
 
-    /* ===== HERO COPY ===== */
     .hero-title {
-      margin: 0 0 24px;
-      color: var(--color-text);
-      font-size: 56px;
-      line-height: 1.24;
+      margin: 0 0 22px;
+      color: var(--ink);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.22;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
     }
 
-    .hero-title-point { color: var(--color-primary); }
+    .hero-title-point { color: var(--primary); }
 
     .hero-description {
-      margin: 0 0 28px;
-      color: var(--color-text-sub);
-      font-size: 18px;
-      line-height: 1.72;
-      font-weight: 400;
+      margin: 0 0 30px;
+      color: var(--sub);
+      font-size: clamp(16px, 1.4vw, 18px);
+      line-height: 1.75;
       word-break: keep-all;
+      text-wrap: pretty;
     }
 
-    /* ===== 추첨 EVENT 카드 (글래스) ===== */
+    /* ===== 추첨 EVENT 카드 ===== */
     .gift-card {
       display: flex;
       align-items: center;
       gap: 22px;
       flex-wrap: wrap;
       padding: 22px 26px;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      border-radius: 22px;
-      box-shadow: 0 20px 44px rgba(52, 76, 59, 0.12);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      backdrop-filter: blur(14px) saturate(140%);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 40px rgba(60, 50, 35, 0.10);
+      -webkit-backdrop-filter: blur(12px) saturate(130%);
+      backdrop-filter: blur(12px) saturate(130%);
     }
 
-    .gift-image {
-      width: 156px;
-      height: auto;
-      flex: none;
-      border-radius: 12px;
-    }
+    .gift-image { width: 150px; height: auto; flex: none; border-radius: 12px; }
 
     .gift-body {
       display: flex;
@@ -181,97 +160,91 @@
       flex: 1 1 200px;
     }
 
-    /* 배지 — 그라데이션 흐름 */
     .gift-badge {
       display: inline-flex;
       align-items: center;
       align-self: flex-start;
       height: 26px;
-      padding: 0 10px;
+      padding: 0 11px;
       border-radius: 999px;
-      color: var(--color-white);
+      color: var(--white);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.02em;
-      background-color: var(--color-text);
-      background-image: linear-gradient(100deg, #03C75A, #64876D, #344C3B, #03C75A);
+      background-color: var(--ink);
+      background-image: linear-gradient(100deg, #2B2A26, #5A4632, #2B2A26);
       background-size: 300% 100%;
       animation: gradientFlow 6s ease-in-out infinite;
     }
 
     .gift-title {
-      color: var(--color-text);
-      font-size: 24px;
+      color: var(--ink);
+      font-size: clamp(19px, 1.7vw, 24px);
       line-height: 1.35;
       font-weight: 800;
       letter-spacing: -0.01em;
       word-break: keep-all;
     }
 
-    .gift-title-point { color: var(--color-primary); }
+    .gift-title-point { color: var(--primary); }
 
     .gift-note {
-      color: var(--color-text-sub);
-      font-size: 16px;
+      color: var(--sub);
+      font-size: 15px;
       line-height: 1.6;
       font-weight: 500;
       word-break: keep-all;
     }
 
     /* ===== HERO GRAPHIC ===== */
-    .hero-graphic { position: relative; height: 480px; }
-
-    .bubble-wrap {
-      position: absolute;
-      inset: 0;
+    .hero-graphic {
+      position: relative;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 18px;
-      padding-top: 0;
+      gap: 16px;
     }
 
     .bubble {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 20px 24px;
-      font-size: 16px;
+      padding: 19px 24px;
+      font-size: 17px;
       line-height: 24px;
-      box-shadow: 0 12px 28px rgba(52, 76, 59, 0.08);
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
     }
 
     .bubble-1 {
       align-self: flex-start;
-      max-width: 88%;
-      background: var(--color-white);
-      border: 1px solid var(--color-bg-light);
+      max-width: 90%;
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 22px 22px 22px 6px;
-      color: var(--color-text);
-      font-size: 17px;
-      font-weight: 700;
+      color: var(--ink);
       animation: floatA 6s ease-in-out infinite;
     }
 
     .bubble-2 {
       align-self: flex-end;
-      max-width: 78%;
-      background: var(--color-primary);
+      max-width: 80%;
+      background: var(--primary);
       border-radius: 22px 22px 6px 22px;
-      color: var(--color-white);
-      font-size: 17px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(100, 135, 109, 0.24);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(143, 64, 34, 0.26);
       animation: floatB 5.4s ease-in-out infinite;
     }
 
     .bubble-3 {
       align-self: flex-start;
-      max-width: 72%;
-      background: var(--color-primary-light);
+      max-width: 74%;
+      background: var(--light);
       border-radius: 22px 22px 22px 6px;
-      color: var(--color-text);
-      font-weight: 500;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 600;
       animation: floatA 6.6s ease-in-out infinite;
       animation-delay: -0.8s;
     }
@@ -280,17 +253,17 @@
       align-self: flex-end;
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      max-width: 78%;
-      padding: 20px 24px;
-      background: var(--color-white);
-      border: 1px solid var(--color-bg-light);
+      gap: 12px;
+      max-width: 80%;
+      padding: 17px 22px;
+      background: var(--white);
+      border: 1px dashed var(--muted);
       border-radius: 22px 22px 6px 22px;
-      color: var(--color-text);
-      font-size: 16px;
-      line-height: 24px;
+      color: var(--primary-deep);
+      font-size: 15px;
+      line-height: 22px;
       font-weight: 600;
-      box-shadow: 0 12px 28px rgba(52, 76, 59, 0.08);
+      box-shadow: 0 10px 24px rgba(60, 50, 35, 0.06);
       animation: floatB 5.8s ease-in-out infinite;
       animation-delay: -1.2s;
     }
@@ -304,36 +277,48 @@
       flex: none;
     }
 
-    @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes floatB { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @keyframes floatB { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
     @keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
     /* ===== FORM SECTION ===== */
-    .form-section { width: 100%; background: var(--color-bg); }
+    .form-section { width: 100%; background: var(--bg); }
 
     .form-section-inner {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 80px 24px 88px;
     }
 
     .section-heading { margin-bottom: 36px; text-align: center; }
 
-    .section-title {
-      margin: 0 0 12px;
-      color: var(--color-text);
-      font-size: 32px;
-      line-height: 1.4;
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.16em;
     }
 
-    .section-title-line { display: inline-block; }
+    .section-eyebrow span { width: 28px; height: 1px; background: var(--muted); }
+
+    .section-title {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: clamp(24px, 2.6vw, 32px);
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+    }
 
     .section-description {
       margin: 0;
-      color: var(--color-text-sub);
+      color: var(--sub);
       font-size: 17px;
       line-height: 1.7;
       word-break: keep-all;
@@ -342,10 +327,11 @@
     .form-frame {
       position: relative;
       width: 100%;
-      background: transparent;
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
+      box-shadow: 0 20px 48px rgba(60, 50, 35, 0.07);
     }
 
     .form-loader {
@@ -361,21 +347,19 @@
       align-items: center;
       justify-content: flex-start;
       padding: 120px 24px 40px;
-      background: linear-gradient(160deg, #F0F5F1 0%, #FFFFFF 58%, #FAFBFA 100%);
-      opacity: 1;
-      visibility: visible;
+      background: linear-gradient(160deg, var(--tint) 0%, var(--white) 58%, var(--bg) 100%);
       transition: opacity 0.35s ease, visibility 0.35s ease;
     }
 
     .form-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .loader-title {
-      margin-bottom: 24px;
-      color: var(--color-text);
-      font-size: 18px;
+      margin-bottom: 22px;
+      color: var(--ink);
+      font-size: 17px;
       line-height: 26px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
     .loader-bar {
@@ -384,9 +368,9 @@
       height: 18px;
       padding: 3px;
       overflow: hidden;
-      border: 2px solid var(--color-primary);
+      border: 2px solid var(--primary);
       border-radius: 999px;
-      background: var(--color-white);
+      background: var(--white);
     }
 
     .loader-bar-progress {
@@ -394,13 +378,13 @@
       width: 42%;
       height: 100%;
       border-radius: 999px;
-      background: var(--color-primary);
+      background: var(--primary);
       animation: loadingProgress 1.5s ease-in-out infinite;
     }
 
     .loader-description {
       margin: 20px 0 0;
-      color: var(--color-text-sub);
+      color: var(--sub);
       font-size: 15px;
       line-height: 24px;
       font-weight: 500;
@@ -425,60 +409,66 @@
     }
 
     /* ===== NOTICE ===== */
-    .notice-section { width: 100%; background: var(--color-bg-light); }
+    .notice-section {
+      width: 100%;
+      background: var(--tint);
+      border-top: 1px solid var(--border);
+    }
 
     .notice-inner {
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 88px 24px;
+      padding: 80px 24px;
     }
 
     .notice-heading {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .notice-icon {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex: none;
       border-radius: 50%;
-      background: var(--color-accent-light);
-      color: var(--color-accent);
-      font-size: 19px;
-      font-weight: 700;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 800;
     }
 
     .notice-title {
       margin: 0;
-      color: var(--color-text);
-      font-size: 28px;
+      color: var(--ink);
+      font-size: clamp(21px, 2.2vw, 28px);
       line-height: 1.4;
       font-weight: 800;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
     }
 
     .notice-list {
       list-style: none;
       margin: 0;
       padding: 0;
-      border-top: 1px solid #D5DDD7;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-strong);
     }
 
     .notice-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      padding: 20px 4px;
-      border-bottom: 1px solid #D5DDD7;
-      color: var(--color-text-sub);
-      font-size: 17px;
+      padding: 19px 4px;
+      border-bottom: 1px solid var(--border-strong);
+      color: var(--sub);
+      font-size: 16px;
       line-height: 1.65;
       word-break: keep-all;
     }
@@ -486,64 +476,48 @@
     .notice-dot {
       width: 6px;
       height: 6px;
-      margin-top: 10px;
+      margin-top: 9px;
       flex: none;
       border-radius: 50%;
-      background: var(--color-primary);
+      background: var(--primary);
     }
 
     /* ===== FOOTER ===== */
-    footer { width: 100%; background: var(--color-text); color: var(--color-white); }
+    footer { width: 100%; background: var(--ink); color: var(--white); }
 
     .footer-inner {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 60px 24px;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 40px;
+      gap: 36px;
+      flex-wrap: wrap;
     }
 
-    .footer-logo { display: inline-flex; align-items: center; margin-bottom: 20px; }
-    .footer-logo img { width: auto; height: 34px; object-fit: contain; }
+    .footer-logo { display: inline-flex; align-items: center; margin-bottom: 18px; }
+    .footer-logo img { width: auto; height: 32px; object-fit: contain; }
 
     .footer-text {
       margin: 0;
-      color: var(--color-primary-light);
+      color: var(--light);
       font-size: 16px;
       line-height: 1.7;
       word-break: keep-all;
     }
 
-    .copyright {
-      color: var(--color-primary-mid);
-      font-size: 14px;
-      line-height: 22px;
-      white-space: nowrap;
-    }
+    .copyright { color: var(--muted); font-size: 14px; line-height: 22px; }
 
-    /* ===== TABLET ===== */
-    @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 56px 20px 64px; }
-      .hero-title { font-size: 40px; line-height: 1.28; }
-      .hero-description { font-size: 17px; }
-      .gift-title { font-size: 22px; }
-
-    /* ===== MOBILE ===== */
     @media (max-width: 560px) {
-      .hero-inner { padding: 44px 20px 52px; }
-      .hero-eyebrow { min-height: 38px; padding: 7px 13px; }
-      .hero-logo { height: 19px; }
-      .hero-eyebrow-text { font-size: 13px; }
-      .hero-title { margin-bottom: 22px; font-size: 32px; }
-      .hero-description { font-size: 16px; line-height: 1.7; }
+      .hero-inner { padding: 44px 20px 52px; gap: 36px; }
+      .hero-graphic { min-height: 380px; }
       .gift-card { gap: 16px; padding: 18px 20px; }
       .gift-image { width: 126px; }
-      .gift-title { font-size: 20px; }
-      .gift-note { font-size: 14px; }
-      .hero-graphic { height: 440px; }
+      .form-section-inner { padding: 56px 20px 64px; }
+      .notice-inner { padding: 56px 20px; }
+    }
   </style>
 </head>
 
@@ -552,7 +526,6 @@
   <!-- ===== HERO ===== -->
   <header class="hero">
 
-    <div class="hero-grid"></div>
     <div class="hero-decoration-top"></div>
     <div class="hero-decoration-bottom"></div>
 
@@ -576,7 +549,6 @@
           더 나은 단꿈으로 만들어가겠습니다.
         </p>
 
-        <!-- 추첨 EVENT 카드 -->
         <div class="gift-card">
 
           <img src="./naverpay-10000.png" alt="네이버페이 1만원" class="gift-image">
@@ -598,37 +570,32 @@
 
       </div>
 
-      <!-- HERO GRAPHIC -->
       <div class="hero-graphic">
 
-        <div class="bubble-wrap">
+        <div class="bubble bubble-1">
+          <span class="bubble-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B4552F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"></path></svg>
+          </span>
+          이런 점이 불편했어요
+        </div>
 
-          <div class="bubble bubble-1">
-            <span class="bubble-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64876D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"></path></svg>
-            </span>
-            이런 점이 불편했어요
-          </div>
+        <div class="bubble bubble-2">
+          <span class="bubble-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"></path></svg>
+          </span>
+          이런 게 있으면 좋겠어요
+        </div>
 
-          <div class="bubble bubble-2">
-            <span class="bubble-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9H4l1.8-4.2A8.8 8.8 0 0 1 3 12a9 9 0 0 1 9-9Z"></path></svg>
-            </span>
-            이런 게 있으면 좋겠어요
-          </div>
+        <div class="bubble bubble-3">
+          <span class="bubble-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B2A26" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path></svg>
+          </span>
+          응원의 이야기도 좋아요
+        </div>
 
-          <div class="bubble bubble-3">
-            <span class="bubble-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#344C3B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20Z"></path></svg>
-            </span>
-            응원의 이야기도 좋아요
-          </div>
-
-          <div class="bubble-label">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64876D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8-3-8Z"></path></svg>
-            단꿈에 전달됩니다
-          </div>
-
+        <div class="bubble-label">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B4552F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8-3-8Z"></path></svg>
+          단꿈에 전달됩니다
         </div>
 
       </div>
@@ -645,12 +612,9 @@
       <div class="form-section-inner">
 
         <div class="section-heading">
-          <h2 class="section-title">
-            <span class="section-title-line">— 의견을 들려주세요 —</span>
-          </h2>
-          <p class="section-description">
-            문의부터 강의 수강 후기까지 자유롭게 남겨주세요.
-          </p>
+          <div class="section-eyebrow"><span></span>OPINION<span></span></div>
+          <h2 class="section-title">의견을 들려주세요</h2>
+          <p class="section-description">문의부터 강의 수강 후기까지 자유롭게 남겨주세요.</p>
         </div>
 
         <div id="formFrame" class="form-frame">
@@ -687,37 +651,30 @@
         </div>
 
         <ul class="notice-list">
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>보내주신 의견은 더 나은 서비스와 콘텐츠 개선을 위해 활용됩니다.</span>
           </li>
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>보내주신 의견에 대한 개별 답변은 제공되지 않습니다.</span>
           </li>
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>감사 선물은 회원 정보에 등록된 학부모 휴대폰 번호로 발송됩니다.</span>
           </li>
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>회원 탈퇴 또는 부정확한 회원 정보로 인한 오발송의 경우 재발송되지 않습니다.</span>
           </li>
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>강의 수강 후기는 단꿈e 공식 사이트 및 온·오프라인 홍보 등 마케팅 목적으로 활용될 수 있습니다.</span>
           </li>
-
           <li class="notice-item">
             <span class="notice-dot"></span>
             <span>욕설, 비방, 개인정보가 포함된 내용은 작성하지 말아 주세요.</span>
           </li>
-
         </ul>
 
       </div>
