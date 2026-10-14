@@ -1,1 +1,9 @@
-
+{
+  "_안내": "오늘(한국 시간)이 startDate~endDate 사이이면 히어로 바로 아래에 의견 답변 배너가 보입니다. 날짜는 YYYY-MM-DD 형식이고 시작일·종료일 당일도 포함됩니다. 제목·설명·버튼 문구·연결 주소도 여기서 바꿀 수 있습니다.",
+  "startDate": "2026-10-15",
+  "endDate": "2026-10-31",
+  "title": "단꿈의 답장이 도착했어요",
+  "description": "그동안 보내주신 의견에 대한 답변과 개선 소식을 한곳에 모았어요.",
+  "buttonText": "답장 읽으러 가기",
+  "url": "https://edu-dankkum.github.io/Feedback/"
+}
