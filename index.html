@@ -534,6 +534,103 @@
     @keyframes fly { 0%,100% { transform: translate(0,0); } 50% { transform: translate(3px,-2px); } }
 
     /* =========================================================
+       의견 답변 배너 (히어로 바로 아래, data/feedback.json 기간에만)
+       ========================================================= */
+    .reply-band {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(110deg, #4A3F36 0%, #5E4C40 55%, #6E5546 100%);
+      color: var(--white);
+      animation: fadeUp .6s ease both;
+    }
+
+    .reply-band[hidden] { display: none; }
+
+    .reply-band::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -140px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(214,120,80,.55), transparent 65%);
+      filter: blur(10px);
+      animation: breathe 7s ease-in-out infinite;
+    }
+
+    .reply-band::after {
+      content: "";
+      position: absolute;
+      left: -40px;
+      bottom: -120px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,230,214,.18), transparent 65%);
+    }
+
+    .reply-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .reply-env { flex: none; animation: floatA 5s ease-in-out infinite; }
+
+    .reply-text { flex: 1 1 280px; }
+
+    .reply-title {
+      display: block;
+      margin: 0;
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 800;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .reply-desc {
+      display: block;
+      margin: 6px 0 0;
+      color: var(--light);
+      opacity: .85;
+      font-size: 15px;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    .reply-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 50px;
+      padding: 0 24px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .reply-btn:hover { background: #C4623A; color: var(--white); transform: translateY(-2px); }
+    .reply-btn svg { transition: transform .2s ease; }
+    .reply-btn:hover svg { transform: translateX(3px); }
+
+    @media (max-width: 560px) {
+      .reply-inner { padding: 28px 20px; gap: 18px; }
+      .reply-btn { width: 100%; justify-content: center; }
+    }
+
+    /* =========================================================
        FORM SECTION
        ========================================================= */
     .form-section { width: 100%; background: var(--bg); }
@@ -920,6 +1017,27 @@
   </header>
 
 
+  <!-- ===== 의견 답변 배너 (data/feedback.json 노출 기간에만 표시) ===== -->
+  <aside id="replyBand" class="reply-band" aria-labelledby="replyTitle" hidden>
+    <div class="reply-inner">
+      <svg class="reply-env" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <rect x="8" y="16" width="48" height="34" rx="6" fill="#B4552F"/>
+        <path d="M8 22l24 16 24-16" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="52" cy="16" r="7" fill="#EFE6D6"/>
+        <path d="M49.5 16l1.8 1.8 3.4-3.6" stroke="#2B2A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="reply-text">
+        <strong id="replyTitle" class="reply-title">단꿈의 답장이 도착했어요</strong>
+        <span id="replyDesc" class="reply-desc">그동안 보내주신 의견에 대한 답변과 개선 소식을 한곳에 모았어요.</span>
+      </div>
+      <a id="replyBtn" class="reply-btn" href="https://edu-dankkum.github.io/Feedback/" target="_blank" rel="noopener">
+        <span id="replyBtnText">답장 읽으러 가기</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </aside>
+
+
   <main>
 
     <!-- ===== 의견 작성 ===== -->
@@ -1150,10 +1268,46 @@
         });
 
       return {
+        normDate: normDate,
+        todayKST: todayKST,
         whenWinnersShown: function (fn) {
           if (settled && !winnersEl.hidden) fn(); else onWinnersShown = fn;
         }
       };
+    })();
+
+
+    /* =========================================================
+       의견 답변 배너 : data/feedback.json
+       오늘(한국 시간)이 startDate ~ endDate 사이일 때만 표시
+       ========================================================= */
+    (function () {
+      var band = document.getElementById('replyBand');
+
+      function setText(id, value) {
+        var v = String(value || '').trim();
+        if (v) document.getElementById(id).textContent = v;
+      }
+
+      fetch('./data/feedback.json?v=' + Date.now(), { cache: 'no-store' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (d) {
+          var s = Hero.normDate(d && d.startDate), e = Hero.normDate(d && d.endDate);
+          var today = Hero.todayKST();
+          if (!s || !e || today < s || today > e) return;
+
+          setText('replyTitle', d.title);
+          setText('replyDesc', d.description);
+          setText('replyBtnText', d.buttonText);
+          if (/^https:\/\//.test(String(d.url || '').trim())) {
+            document.getElementById('replyBtn').href = String(d.url).trim();
+          }
+          band.hidden = false;
+        })
+        .catch(function () { /* 파일이 없거나 잘못되면 배너를 숨긴 채로 둠 */ });
     })();
 
 
